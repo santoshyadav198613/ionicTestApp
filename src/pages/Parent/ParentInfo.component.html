@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>
+      Parent Registration
+      </ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-right >Next <ion-icon name="arrow-forward"></ion-icon></button>
+      </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+ 
+    <ion-slides>
+
+      <ion-slide>
+        <ion-list>
+           <form class="form-horizontal" #familyform="ngForm" (submit)="logForm()" novalidate>
+          <ion-item>
+            <ion-label floating>FirstName</ion-label>
+            <ion-input type="text" class="form-control" name="firstname" [(ngModel)]="parent.PayerFirstName" required #fname="ngModel">
+            </ion-input>
+            <div [hidden]="fname.valid || fname.pristine" class="alert alert-danger">
+              Field is required..
+            </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>LastName</ion-label>
+            <ion-input type="text" class="form-control" name="lastname" required [(ngModel)]="parent.PayerLastName" #lname="ngModel">
+            </ion-input>
+            <div [hidden]="lname.valid || lname.pristine" class="alert alert-danger">
+              Field is required..
+            </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>City</ion-label>
+            <ion-input type="text" class="form-control" name="city" [(ngModel)]="parent.City">
+            </ion-input>
+
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Zip</ion-label>
+            <ion-input type="text" class="form-control" name="zip" [(ngModel)]="parent.Zip">
+            </ion-input>
+          </ion-item>
+          <button ion-button type="submit" [disabled]="!familyform.form.valid">Submit</button>
+           </form>
+        </ion-list>
+
+      </ion-slide>
+
+      <ion-slide>
+        <h2>Slide 2</h2>
+      </ion-slide>
+
+      <ion-slide>
+        <h2>Slide 3</h2>
+      </ion-slide>
+
+    </ion-slides>
+
+</ion-content>

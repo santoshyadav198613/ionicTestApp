@@ -24,7 +24,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import {  GoogleMaps  } from '@ionic-native/google-maps';
-
+import { ParentInfoComponent } from '../pages/Parent/ParentInfo.compoment'
 
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
@@ -75,7 +75,8 @@ let pages = [
   ItemCreatePage,
   MenuPage,
   SettingsPage,
-  SearchPage
+  SearchPage,
+  ParentInfoComponent
 ];
 
 export function declarations() {

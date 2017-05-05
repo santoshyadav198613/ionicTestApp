@@ -1,44 +1,38 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+    <ion-title>{{ 'Search School' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <form (submit)="doSignup()">
+  <form (submit)="search(school)" #searchForm="ngForm" novalidate>
     <ion-list>
-
       <ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+        <ion-label fixed>{{ 'School Name' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="school.name" name="name" required ></ion-input>
       </ion-item>
-
-      <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
-      </ion-item>
-
-      <!--
-      Want to add a Username? Here you go:
-
-      <ion-item>
-        <ion-label floating>Username</ion-label>
-        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
-      </ion-item>
-      -->
-
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
-
+ 
       <div padding>
-        <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+        <button ion-button color="primary" block  [disabled]="!searchForm.form.valid">{{ 'Search' | translate }}</button>
       </div>
-
     </ion-list>
   </form>
+<ion-list>
+    <ion-item-sliding *ngFor="let school of SchoolDetails">
+      <button ion-item (click)="openItem(school)">
+        <h2>{{school.SchoolName}}</h2>
+        <p>{{school.SchoolAddress}}</p>
+        <ion-note item-right *ngIf="school.SchoolSessionId">{{school.SchoolSessionId}}</ion-note>
+      </button>
+
+      <!--<ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options>-->
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

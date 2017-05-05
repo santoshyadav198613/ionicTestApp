@@ -18,6 +18,7 @@ import { ListMasterPage } from '../pages/list-master/list-master';
 import { MenuPage } from '../pages/menu/menu';
 import { SettingsPage } from '../pages/settings/settings';
 import { SearchPage } from '../pages/search/search';
+import { ParentInfoComponent } from '../pages/Parent/ParentInfo.compoment'
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
