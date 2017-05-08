@@ -1,65 +1,89 @@
 <ion-header>
-    <ion-navbar color="primary">
-      <ion-title>
+  <ion-navbar color="primary">
+    <ion-title>
       Parent Registration
-      </ion-title>
-
-      <ion-buttons end>
-        <button ion-button icon-right >Next <ion-icon name="arrow-forward"></ion-icon></button>
-      </ion-buttons>
-    </ion-navbar>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-right>Next <ion-icon name="arrow-forward"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
 <ion-content>
- 
-    <ion-slides>
 
-      <ion-slide>
-        <ion-list>
-           <form class="form-horizontal" #familyform="ngForm" (submit)="logForm()" novalidate>
+  <ion-slides>
+
+    <ion-slide>
+      <ion-list>
+        <form class="form-horizontal" #familyform="ngForm" (submit)="logForm()" novalidate>
           <ion-item>
             <ion-label floating>FirstName</ion-label>
             <ion-input type="text" class="form-control" name="firstname" [(ngModel)]="parent.PayerFirstName" required #fname="ngModel">
             </ion-input>
-            <div [hidden]="fname.valid || fname.pristine" class="alert alert-danger">
-              Field is required..
-            </div>
           </ion-item>
 
           <ion-item>
             <ion-label floating>LastName</ion-label>
-            <ion-input type="text" class="form-control" name="lastname" required [(ngModel)]="parent.PayerLastName" #lname="ngModel">
+            <ion-input type="text" class="form-control" name="lastname"  [(ngModel)]="parent.PayerLastName" required #lname="ngModel">
             </ion-input>
-            <div [hidden]="lname.valid || lname.pristine" class="alert alert-danger">
-              Field is required..
-            </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" class="form-control" name="email" required [(ngModel)]="parent.EmailAddress" #email="ngModel">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>STREET ADDRESS</ion-label>
+            <ion-input type="text" class="form-control" name="AddressLine1"  [(ngModel)]="parent.AddressLine1" required #addr1="ngModel">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>STREET ADDRESS #2(STR,APT,ETC)</ion-label>
+            <ion-input type="text" class="form-control" name="AddressLine2"  [(ngModel)]="parent.AddressLine2" required #addr2="ngModel">
+            </ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label floating>City</ion-label>
-            <ion-input type="text" class="form-control" name="city" [(ngModel)]="parent.City">
+            <ion-input type="text" class="form-control" name="City"  [(ngModel)]="parent.City" required #city="ngModel">
             </ion-input>
+          </ion-item>
 
+
+          <ion-item>
+            <ion-label floating>State</ion-label>
+            <ion-select name="state" required [(ngModel)]="parent.State">
+              <ion-option *ngFor="let c of cityList" [value]="c.statecode">{{c.statecode}}</ion-option>
+            </ion-select>
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Zip</ion-label>
-            <ion-input type="text" class="form-control" name="zip" [(ngModel)]="parent.Zip">
+            <ion-label floating>Mobile</ion-label>
+            <ion-input type="text" class="form-control" name="mobile"  [(ngModel)]="parent.PhoneMobile" required #mobile="ngModel">
             </ion-input>
           </ion-item>
-          <button ion-button type="submit" [disabled]="!familyform.form.valid">Submit</button>
-           </form>
-        </ion-list>
 
-      </ion-slide>
+          <ion-item>
+            <ion-label floating>Home</ion-label>
+            <ion-input type="text" class="form-control" name="home"  [(ngModel)]="parent.PhoneHome" required #home="ngModel">
+            </ion-input>
+          </ion-item>
 
-      <ion-slide>
-        <h2>Slide 2</h2>
-      </ion-slide>
+        </form>
+      </ion-list>
 
-      <ion-slide>
-        <h2>Slide 3</h2>
-      </ion-slide>
+    </ion-slide>
 
-    </ion-slides>
+    <ion-slide>
+      <h2>Slide 2</h2>
+    </ion-slide>
+
+    <ion-slide>
+      <h2>Slide 3</h2>
+    </ion-slide>
+
+  </ion-slides>
 
 </ion-content>

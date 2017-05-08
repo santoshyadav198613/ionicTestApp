@@ -6,4 +6,7 @@ export interface IParent{
     AddressLine1 : string,    
     City: string,
     Zip : string,
+    State: string,
+    PhoneMobile : string,
+    PhoneHome : string
 }

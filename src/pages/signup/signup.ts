@@ -3,7 +3,6 @@ import { NavController, ToastController, NavParams } from 'ionic-angular';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
-import { MainPage } from '../../pages/pages';
 import { User } from '../../providers/user';
 import { SchoolApi } from '../../providers/schoolApi'
 import { Ischools } from '../../providers/school'
@@ -28,8 +27,6 @@ export class SignupPage {
     name: '11418'
   };
 
-  // Our translated text strings
-  private signupErrorString: string;
 
   constructor(public navCtrl: NavController,
     public user: User,

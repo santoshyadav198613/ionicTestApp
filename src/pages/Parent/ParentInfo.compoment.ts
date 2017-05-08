@@ -1,11 +1,7 @@
-import { Component } from '@angular/core';
-import { NavController, ToastController, NavParams } from 'ionic-angular';
-
-import { TranslateService } from 'ng2-translate/ng2-translate';
-
-import { MainPage } from '../../pages/pages';
-import { User } from '../../providers/user';
-import { Ischools } from '../../providers/school'
+import { Component , ViewChild} from '@angular/core';
+import { NavController, ToastController, NavParams ,Slides  } from 'ionic-angular';
+ 
+import { CityProvider, city } from  '../../providers/cityprovider' 
 import { IParent } from './IParent'
 /*
   Generated class for the Signup page.
@@ -15,10 +11,12 @@ import { IParent } from './IParent'
 */
 @Component({
   selector: 'parent-info',
-  templateUrl: 'ParentInfo.component.html'
+  templateUrl: 'ParentInfo.component.html',
+  providers : [CityProvider]
 })
 export class ParentInfoComponent {
   schoolSessionId: number;
+  cityList : city[];
   parent: IParent ={
     PayerFirstName :"",
     PayerLastName : "",
@@ -26,19 +24,24 @@ export class ParentInfoComponent {
     City:"",
     Zip:"",
     AddressLine1:"",
-    AddressLine2: ""
+    AddressLine2: "",
+    State: "",
+    PhoneMobile: "",
+    PhoneHome: ""
   }; I
+  @ViewChild(Slides) slides: Slides;
   constructor(public navCtrl: NavController,  private _params: NavParams,
-    public user: User,
-    public toastCtrl: ToastController,
-    public translateService: TranslateService) {
-
+    public toastCtrl: ToastController,private cityprovider: CityProvider) {
 
   }
 
   ionViewDidLoad(){
       this.schoolSessionId = this._params.get('id');
       console.log(this.schoolSessionId);
+      this.cityList= this.cityprovider.getCityList();
   }
 
+ngAfterViewInit(){
+    this.slides.lockSwipes(true);
+}
 }

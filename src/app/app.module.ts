@@ -22,10 +22,10 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SearchPage } from '../pages/search/search';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 import {  GoogleMaps  } from '@ionic-native/google-maps';
 import { ParentInfoComponent } from '../pages/Parent/ParentInfo.compoment'
-
+import { CityProvider } from '../providers/cityprovider'
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
 import { Settings } from '../providers/settings';
@@ -96,6 +96,7 @@ export function providers() {
     SplashScreen,
     Camera,
     GoogleMaps,
+    CityProvider,
     { provide: Settings, useFactory: provideSettings, deps: [ Storage ] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
